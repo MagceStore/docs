@@ -23,9 +23,20 @@ Field Name | Type | Description
 filed | string | 字段名
 message | string | 错误描述
 
-```json
+```js
 {
   "code": 1001,
   "message": "Token 不正确"
+}
+```
+
+```js
+{
+  "code": 1001,
+  "message": "Token 不正确",
+  "fields": [{
+    "field": "name",
+    "message": "超过20个字符"
+  }]
 }
 ```
