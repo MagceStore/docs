@@ -9,11 +9,18 @@
 
 
 ## 错误信息数据结构
-#### 一般错误信息
+#### <a name="errorResponseObject"></a>Error Response Object
 
 Field Name | Type | Description
 ---|:---:|---
 code | integer | 错误代码
+message | string | 错误描述
+fields | [[Validated Error Object](#validatedErrorObject)] | 当有数据验证错误时，此字段会出现
+
+#### <a name="validatedErrorObject"></a>Validated Error Object
+Field Name | Type | Description
+---|:---:|---
+filed | string | 字段名
 message | string | 错误描述
 
 ```json
