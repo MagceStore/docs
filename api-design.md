@@ -11,6 +11,11 @@
 ## 错误信息数据结构
 #### 一般错误信息
 
+Field Name | Type | Description
+---|:---:|---
+code | integer | 错误代码
+message | string | 错误描述
+
 ```json
 {
   "code": 1001,
