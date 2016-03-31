@@ -1,14 +1,13 @@
 # API 设计规范
 #### Version 1.0
 
-## HTTP状态规范
+## HTTP状态码规范
 * 系统框架返回`400`, `401`, `403`, `404`, `500`状态码
 * 数据验证，业务逻辑错误等需要通知给客户端，均返回`499`状态码
 * 服务器端未知错误，需返回`500`状态码
 * 成功均返回`200`状态码
 
-
-## 错误信息数据结构
+## Response 错误信息数据结构
 #### <a name="errorResponseObject"></a>Error Response Object
 
 Field Name | Type | Description
@@ -70,6 +69,12 @@ perPage | integer | 每页记录数
   "_links": {
     "self": {
       "href": "http://127.0.0.1:8810/v1/users?page=1"
+    },
+    "next": {
+      "href": "http://127.0.0.1:8810/v1/users?page=2"
+    },
+    "last": {
+      "href": "http://127.0.0.1:8810/v1/users?page=3"
     }
   },
   "_meta": {
@@ -80,3 +85,5 @@ perPage | integer | 每页记录数
   }
 }
 ```
+
+## Response (PUT/POST/GET) 直接返回 Object
