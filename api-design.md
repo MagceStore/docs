@@ -40,3 +40,43 @@ message | string | 错误描述
   }]
 }
 ```
+
+## Response 分页数据结构
+
+Filed Name | Type | Description
+---|:---:|---
+items | [Object] | 数据
+\_links | Object | 当前页链接
+\_meta | [Pagination Meta Object](#metaObject) | 分页数据
+
+#### <a name="metaObject"></a>Pagination Meta Object
+Filed Name | Type | Description
+---|:---:|---
+totalCount | integer | 总记录数
+pageCount | integer | 总分页数
+currentPage | integer | 当前页码
+perPage | integer | 每页记录数
+
+```js
+{
+  "items": [
+    {
+      "id": "1",
+      "email": "jin.chen@starlight-sms.com",
+      "name": "Jin.Chen",
+      "status": "ACTIVE"
+    },
+  ],
+  "_links": {
+    "self": {
+      "href": "http://127.0.0.1:8810/v1/users?page=1"
+    }
+  },
+  "_meta": {
+    "totalCount": 3,
+    "pageCount": 1,
+    "currentPage": 1,
+    "perPage": 20
+  }
+}
+```
