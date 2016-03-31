@@ -32,8 +32,8 @@ message | string | 错误描述
 
 ```js
 {
-  "code": 1001,
-  "message": "Token 不正确",
+  "code": 2000,
+  "message": "数据验证错误",
   "fields": [{
     "field": "name",
     "message": "超过20个字符"
