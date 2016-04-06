@@ -3,7 +3,7 @@
 
 ## HTTP状态码规范
 * 系统框架返回`400`, `401`, `403`, `404`, `500`状态码
-* 数据验证，业务逻辑错误等需要通知给客户端，均返回`499`状态码
+* 数据验证，业务逻辑错误等需要通知给客户端，均返回`449`状态码
 * 服务器端未知错误，需返回`500`状态码
 * 成功均返回`200`状态码
 * 批量操作部分成功返回`229`状态码
@@ -151,3 +151,158 @@ message | string | 错误信息
 ```
 
 ## Response (PUT/POST/GET) 直接返回 Object
+```js
+{
+  "key": "value"
+}
+```
+
+## 基于Yii2 代码实现
+
+```php
+<?php
+namespace rest\versions\v1\controllers;
+
+use yii\base\Model;
+use yii\data\ArrayDataProvider;
+use rest\libraries\errors\ErrorCode;
+use rest\libraries\errors\ValidateException;
+use rest\libraries\Controller;
+use rest\libraries\errors\ClientException;
+use rest\libraries\successes\Success;
+
+class TestController extends Controller
+{
+    /**
+     * 分页列表
+     *
+     * ~~~
+     * {
+     *   "items": [
+     *     {
+     *       "id": 1,
+     *       "name": "mole"
+     *     }
+     *   ],
+     *   "_links": {
+     *     "self": {
+     *       "href": "http://127.0.0.1:8810/v1/users?page=1"
+     *     }
+     *   },
+     *   "_meta": {
+     *     "totalCount": 3,
+     *     "pageCount": 1,
+     *     "currentPage": 1,
+     *     "perPage": 20
+     *   }
+     * }
+     * ~~~
+     *
+     * @return ArrayDataProvider
+     */
+    public function actionIndex()
+    {
+        return new ArrayDataProvider([
+            'allModels' => [],
+            'key' => 'id'
+        ]);
+    }
+
+    /**
+     * 返回Object
+     *
+     * ~~~
+     * {
+     *   "id": 1,
+     *   "name": "mole"
+     * }
+     * ~~~
+     *
+     * @return Model
+     */
+    public function actionView()
+    {
+        return new Model();
+    }
+
+    /**
+     * 成功
+     *
+     * ~~~
+     * {
+     *   "code": 0,
+     *   "message": "SUCCESS"
+     * }
+     * ~~~
+     *
+     * @return Success
+     */
+    public function actionDelete()
+    {
+        return new Success();
+    }
+
+    /**
+     * 批处理部分失败
+     *
+     * ~~~
+     * {
+     *   "code": 3,
+     *   "message": "PARTIAL_SUCCESS",
+     *   "failedItems": [
+     *     {
+     *       "index": 3,
+     *       "error": {
+     *         "code": 3014,
+     *         "message": "cant remove."
+     *       }
+     *     }
+     *   ]
+     * }
+     * ~~~
+     *
+     * @return Success
+     */
+    public function actionPartial()
+    {
+        return new Success([
+            'failedItems' => [
+                [
+                    'index' => 3,
+                    'error' => [
+                        'code' => 3124,
+                        'message' => 'Cant remove.'
+                    ]
+                ]
+            ]
+        ]);
+    }
+
+    /**
+     * 直接抛出错误信息
+     *
+     * ~~~
+     * {
+     *   "code": 1001
+     *   "message": "Token invalid."
+     * }
+     * ~~~
+     *
+     * @throws ClientException
+     */
+    public function actionError()
+    {
+        throw new ClientException(ErrorCode::E_DATA_EXIST);
+    }
+
+    /**
+     * 直接抛出验证错误
+     * @throws ValidateException
+     */
+    public function actionValidate()
+    {
+        $model = new Model();
+        throw new ValidateException($model);
+    }
+}
+```
