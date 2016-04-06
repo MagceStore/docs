@@ -60,11 +60,11 @@ perPage | integer | 每页记录数
 #### <a name="linksObject"></a>Pagination Links Object
 Filed Name | Type | Description
 ---|:---:|---
-self | [Link Object]('#linkObject') | 当前页
-first | [Link Object]('#linkObject') | 第一页
-prev | [Link Object]('#linkObject') | 前一页
-next | [Link Object]('#linkObject') | 后一页
-last | [Link Object]('#linkObject') | 最后页
+self | [Link Object](#linkObject) | 当前页
+first | [Link Object](#linkObject) | 第一页
+prev | [Link Object](#linkObject) | 前一页
+next | [Link Object](#linkObject) | 后一页
+last | [Link Object](#linkObject) | 最后页
 
 #### <a name="linkObject"></a> Pagination Link Object
 Filed Name | Type | Description
@@ -130,6 +130,13 @@ message | string | 错误信息
 ```js
 {
   "code": 0,
+  "message": "SUCCESS"
+}
+```
+
+```js
+{
+  "code": 3,
   "message": "PARTIAL_SUCCESS",
   "failedItems": [
     {
