@@ -6,6 +6,7 @@
 * 数据验证，业务逻辑错误等需要通知给客户端，均返回`499`状态码
 * 服务器端未知错误，需返回`500`状态码
 * 成功均返回`200`状态码
+* 批量操作部分成功返回`229`状态码
 
 ## Response 错误信息数据结构
 #### <a name="errorResponseObject"></a>Error Response Object
@@ -45,7 +46,7 @@ message | string | 错误描述
 Filed Name | Type | Description
 ---|:---:|---
 items | [Object] | 数据
-\_links | Object | 当前页链接
+\_links | [Pagination Link Object](#linksObject) | 页码链接
 \_meta | [Pagination Meta Object](#metaObject) | 分页数据
 
 #### <a name="metaObject"></a>Pagination Meta Object
@@ -56,33 +57,89 @@ pageCount | integer | 总分页数
 currentPage | integer | 当前页码
 perPage | integer | 每页记录数
 
+#### <a name="linksObject"></a>Pagination Links Object
+Filed Name | Type | Description
+---|:---:|---
+self | [Link Object]('#linkObject') | 当前页
+first | [Link Object]('#linkObject') | 第一页
+prev | [Link Object]('#linkObject') | 前一页
+next | [Link Object]('#linkObject') | 后一页
+last | [Link Object]('#linkObject') | 最后页
+
+#### <a name="linkObject"></a> Pagination Link Object
+Filed Name | Type | Description
+---|:---:|---
+href | string | 链接地址
+
 ```js
 {
   "items": [
     {
-      "id": "1",
-      "email": "jin.chen@starlight-sms.com",
-      "name": "Jin.Chen",
+      "id": "2",
+      "email": "windy.luo@starlight-sms.com",
+      "name": "马丁罗",
       "status": "ACTIVE"
-    },
+    }
   ],
   "_links": {
     "self": {
-      "href": "http://127.0.0.1:8810/v1/users?page=1"
+      "href": "http://127.0.0.1:8810/v1/users?per-page=1&page=2"
+    },
+    "first": {
+      "href": "http://127.0.0.1:8810/v1/users?per-page=1&page=1"
+    },
+    "prev": {
+      "href": "http://127.0.0.1:8810/v1/users?per-page=1&page=1"
     },
     "next": {
-      "href": "http://127.0.0.1:8810/v1/users?page=2"
+      "href": "http://127.0.0.1:8810/v1/users?per-page=1&page=3"
     },
     "last": {
-      "href": "http://127.0.0.1:8810/v1/users?page=3"
+      "href": "http://127.0.0.1:8810/v1/users?per-page=1&page=3"
     }
   },
   "_meta": {
     "totalCount": 3,
-    "pageCount": 1,
-    "currentPage": 1,
-    "perPage": 20
+    "pageCount": 3,
+    "currentPage": 2,
+    "perPage": 1
   }
+}
+```
+
+## Resonse Resulst Object
+Filed Name | Type | Description
+---|:---:|---
+code | integer | `0` 表示成功，`3` 表示部分成功`如果是批量操作`
+message | string | `SUCCESS` or `PARTIAL_SUCCESS`
+result | Object | 如果需要返回数据将放在此字段里
+failedItems | [[Bulk Item Failure Object](#bulkItemFailure)] | 描述在批量操作中，操作失败的记录
+
+#### <a name="bulkItemFailure"></a> Bulk Item Failure Object
+Filed Name | Type | Description
+---|:---:|---
+index | integer | 失败记录在批量请求数组中的索引值
+error | [Error Object](#errorObject) | 失败错误信息
+
+#### <a name="errorObject"></a> Error Object
+Filed Name | Type | Description
+---|:---:|---
+code | integer | 错误代码
+message | string | 错误信息
+
+```js
+{
+  "code": 0,
+  "message": "PARTIAL_SUCCESS",
+  "failedItems": [
+    {
+      "index": 3,
+      "error": {
+        "code": 1024,
+        "message": "此记录正在被引用，不能删除"
+      }
+    }
+  ]
 }
 ```
 
