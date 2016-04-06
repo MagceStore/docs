@@ -159,6 +159,8 @@ message | string | 错误信息
 
 ## 基于Yii2 代码实现
 
+错误抛出不限于 Controller, 通常会在 Model 中抛出业务逻辑与数据验证错误
+
 ```php
 <?php
 namespace rest\versions\v1\controllers;
@@ -297,6 +299,20 @@ class TestController extends Controller
 
     /**
      * 直接抛出验证错误
+     *
+     * ~~~
+     * {
+     *   "code": 2000,
+     *   "message": "数据验证错误",
+     *   "fields": [
+     *     {
+     *       "field": "name",
+     *       "message": "超过20个字符"
+     *     }
+     *   ]
+     * }
+     * ~~~
+     *
      * @throws ValidateException
      */
     public function actionValidate()
