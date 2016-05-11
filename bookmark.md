@@ -1,3 +1,4 @@
 - [GFM help](https://help.github.com/categories/writing-on-github/)
 - [GFM guide](https://guides.github.com/features/mastering-markdown/)
-- [npm update self on windows](https://github.com/felixrieseberg/npm-windows-upgrade)
+- [npm update self on windows](https://github.com/felixrieseberg/npm-windows-upgrade)  
+- [Angular Style Guide](https://github.com/johnpapa/angular-styleguide)  
