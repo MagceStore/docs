@@ -1,5 +1,5 @@
 ###Validation
-https://github.com/jzaefferer/jquery-validation
+- https://github.com/jzaefferer/jquery-validation
 
 ###Form
-https://github.com/malsup/form/
+- https://github.com/malsup/form/
