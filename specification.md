@@ -1,2 +1,4 @@
 [版本号管理](http://semver.org/lang/zh-CN/)  
 [JSON查询语法](http://jmespath.org/)  
+[JSON Schema](http://json-schema.org/)
+[OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md)   
