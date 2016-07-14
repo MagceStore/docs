@@ -324,4 +324,5 @@ class TestController extends Controller
 ```
 
 #### 参考
-- http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#requirements
+- http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api
+- http://baike.baidu.com/view/1790469.htm
