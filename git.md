@@ -1,0 +1,3 @@
+- [Git Book](https://git-scm.com/book/zh/)
+- [Gitflow Workflow](https://www.atlassian.com/git/tutorials/)
+- [Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
