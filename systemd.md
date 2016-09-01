@@ -10,3 +10,6 @@ OpenSUSE | 12.3
 Arch | Yes
 Gentoo | Optional
 
+```shell
+lsinitramfs -l /boot/initrd.img-4.4.0-34-generic
+```
