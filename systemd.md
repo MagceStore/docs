@@ -21,3 +21,8 @@ Of course, you can still manually create a symlink from a static unit to (for in
 
 ![alt systemd](http://4.bp.blogspot.com/-iZ0FWqueNiQ/U8Jmd-byW4I/AAAAAAAACCk/20kfmmguByE/s1600/1000px-Linux_kernel_unified_hierarchy_cgroups_and_systemd.svg.png)
 ![alt systemd](http://www.ha97.com/wp-content/uploads/2014/07/Systemd_components.svg_.png)
+
+```bash
+systemd-cgls
+ps xawf -eo pid,user,cgroup,args
+```
