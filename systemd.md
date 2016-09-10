@@ -27,3 +27,6 @@ systemd-cgls
 ps xawf -eo pid,user,cgroup,args
 ```
 ### [Story](http://0pointer.de/blog/projects/systemd.html)
+
+Base Event (Upstart)
+Base Dependence(Systemd)
