@@ -43,6 +43,10 @@ Unix遵循的原则是KISS (Keep it simple, stupid)
 # Linux 启动过程
 ![](images/linux-boot.jpg)
 
+```bash
+lsinitramfs -l /boot/initrd.img-4.4.0-34-generic
+```
+
 #### 参考
 [http://molinux.blog.51cto.com/2536040/478704](http://molinux.blog.51cto.com/2536040/478704)   
 [https://segmentfault.com/a/1190000006872609](https://segmentfault.com/a/1190000006872609)   
@@ -59,9 +63,7 @@ OpenSUSE | 12.3
 Arch | Yes
 Gentoo | Optional
 
-```bash
-lsinitramfs -l /boot/initrd.img-4.4.0-34-generic
-```
+
 
 ### static
 Static units are those which cannot be enabled/disabled, but it doesn't mean they are always executed. They will only if another unit depends on them, or if they are manually started.
