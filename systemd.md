@@ -40,7 +40,8 @@ Unix遵循的原则是KISS (Keep it simple, stupid)
 [http://blog.tingyun.com/web/article/detail/1010](http://blog.tingyun.com/web/article/detail/1010)   
 
 
-
+# Linux 启动过程
+@TODO
 
 
 # Systemd
