@@ -41,8 +41,11 @@ Unix遵循的原则是KISS (Keep it simple, stupid)
 
 
 # Linux 启动过程
-@TODO
+![](images/linux-boot.jpg)
 
+#### 参考
+[http://molinux.blog.51cto.com/2536040/478704](http://molinux.blog.51cto.com/2536040/478704)   
+[https://segmentfault.com/a/1190000006872609](https://segmentfault.com/a/1190000006872609)   
 
 # Systemd
 Linux Distribution | Version
