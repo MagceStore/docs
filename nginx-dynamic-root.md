@@ -16,13 +16,13 @@ server {
 
     if ($request_uri ~* ^/phpmyadmin/) {
         set $root "/home/vagrant/workspace/local/yii2-test/phpmyadmin";
-	rewrite ^/phpmyadmin/(.*) /$1 last;
+        rewrite ^/phpmyadmin/(.*) /$1 last;
     }
 
     if ($request_uri ~* ^/backend/) {
         set $root "/home/vagrant/workspace/local/yii2-test/backend/web";
         set $orgscript "/backend";
-	rewrite ^/backend/(.*) /$1 last;
+        rewrite ^/backend/(.*) /$1 last;
     }
 
     root $root;
