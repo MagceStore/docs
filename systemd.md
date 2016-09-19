@@ -80,6 +80,19 @@ Gentoo | Optional
 ![alt systemd](images/systemd-hierarchy.png)
 ![alt systemd](images/systemd-components.png)
 
+### Systemd Utilities
+* bootctl
+* busctl
+* coredumpctl
+* hostnamectl
+* journalctl
+* localectl
+* loginctl
+* machinectl
+* networkctl
+* systemctl
+* timedatectl
+
 # 参考
 https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/chap-Managing_Services_with_systemd.html  
 
