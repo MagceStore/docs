@@ -60,7 +60,11 @@ Base Dependence(Systemd)
 ### systemd 争议
 https://www.zhihu.com/question/25873473   
 
-### [Systemd Story](http://0pointer.de/blog/projects/systemd.html)
+### 
+
+### Systemd Links
+[Software](https://www.freedesktop.org/wiki/Software/systemd/)  
+[Systemd Story](http://0pointer.de/blog/projects/systemd.html)
 [开发者 Lennart Poettering](https://en.wikipedia.org/wiki/Lennart_Poettering)  
 
 ### Linux Distribution default systemd
@@ -92,6 +96,9 @@ Gentoo | Optional
 * networkctl
 * systemctl
 * timedatectl
+
+#### 参考
+https://www.freedesktop.org/software/systemd/man/  
 
 # 参考
 https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/chap-Managing_Services_with_systemd.html  
