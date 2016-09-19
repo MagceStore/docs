@@ -57,6 +57,9 @@ lsinitramfs -l /boot/initrd.img-4.4.0-34-generic
 Base Event (Upstart)  
 Base Dependence(Systemd)  
 
+### systemd 争议
+https://www.zhihu.com/question/25873473   
+
 ### [Systemd Story](http://0pointer.de/blog/projects/systemd.html)
 [开发者 Lennart Poettering](https://en.wikipedia.org/wiki/Lennart_Poettering)  
 
@@ -74,8 +77,8 @@ Arch | Yes
 Gentoo | Optional
 
 ### Systemd 功能
-![alt systemd](http://4.bp.blogspot.com/-iZ0FWqueNiQ/U8Jmd-byW4I/AAAAAAAACCk/20kfmmguByE/s1600/1000px-Linux_kernel_unified_hierarchy_cgroups_and_systemd.svg.png)
-![alt systemd](http://www.ha97.com/wp-content/uploads/2014/07/Systemd_components.svg_.png)
+![alt systemd](images/systemd-hierarchy.png)
+![alt systemd](images/systemd-components.png)
 
 # 参考
 https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/chap-Managing_Services_with_systemd.html  
