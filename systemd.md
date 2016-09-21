@@ -84,6 +84,20 @@ Gentoo | Optional
 ![alt systemd](images/systemd-hierarchy.png)
 ![alt systemd](images/systemd-components.png)
 
+### Unit 类型 
+* Service unit：系统服务
+* Target unit：多个 Unit 构成的一个组
+* Device Unit：硬件设备
+* Mount Unit：文件系统的挂载点
+* Automount Unit：自动挂载点
+* Path Unit：文件或路径
+* Scope Unit：不是由 Systemd 启动的外部进程
+* Slice Unit：进程组
+* Snapshot Unit：Systemd 快照，可以切回某个快照
+* Socket Unit：进程间通信的 socket
+* Swap Unit：swap 文件
+* Timer Unit：定时器
+
 ### Systemd Utilities
 * bootctl
 * busctl
@@ -97,7 +111,104 @@ Gentoo | Optional
 * systemctl
 * timedatectl
 
+### systemctl 命令
+
+#### systemctl list-units命令可以查看当前系统的所有 Unit 
+```shell
+# 列出正在运行的 Unit
+$ systemctl list-units
+
+# 列出所有Unit，包括没有找到配置文件的或者启动失败的
+$ systemctl list-units --all
+
+# 列出所有没有运行的 Unit
+$ systemctl list-units --all --state=inactive
+
+# 列出所有加载失败的 Unit
+$ systemctl list-units --failed
+
+# 列出所有正在运行的、类型为 service 的 Unit
+$ systemctl list-units --type=service
+```
+
+#### systemctl status命令用于查看系统状态和单个 Unit 的状态
+```shell
+# 显示系统状态
+$ systemctl status
+
+# 显示单个 Unit 的状态
+$ sysystemctl status bluetooth.service
+
+# 显示远程主机的某个 Unit 的状态
+$ systemctl -H root@rhel7.example.com status httpd.service
+```
+
+#### 除了status命令，systemctl还提供了三个查询状态的简单方法，主要供脚本内部的判断语句使用
+```shell
+# 显示某个 Unit 是否正在运行
+$ systemctl is-active application.service
+
+# 显示某个 Unit 是否处于启动失败状态
+$ systemctl is-failed application.service
+
+# 显示某个 Unit 服务是否建立了启动链接
+$ systemctl is-enabled application.service
+```
+
+#### 用于启动和停止 Unit（主要是 service）
+```shell
+# 立即启动一个服务
+$ sudo systemctl start apache.service
+
+# 立即停止一个服务
+$ sudo systemctl stop apache.service
+
+# 重启一个服务
+$ sudo systemctl restart apache.service
+
+# 杀死一个服务的所有子进程
+$ sudo systemctl kill apache.service
+
+# 重新加载一个服务的配置文件
+$ sudo systemctl reload apache.service
+
+# 重载所有修改过的配置文件
+$ sudo systemctl daemon-reload
+
+# 显示某个 Unit 的所有底层参数
+$ systemctl show httpd.service
+
+# 显示某个 Unit 的指定属性的值
+$ systemctl show -p CPUShares httpd.service
+
+# 设置某个 Unit 的指定属性
+$ sudo systemctl set-property httpd.service CPUShares=500
+```
+
+#### systemctl list-dependencies命令列出一个 Unit 的所有依赖
+```shell
+$ systemctl list-dependencies nginx.service
+# 展开 target
+$ systemctl list-dependencies --all nginx.service
+```
+
+#### 设置和关闭开机启动
+```shell
+$ sudo systemctl enable nginx.service
+$ sudo systemctl disable nginx.service
+```
+
+#### systemctl list-unit-files命令用于列出所有配置文件
+```shell
+# 列出所有配置文件
+$ systemctl list-unit-files
+
+# 列出指定类型的配置文件
+$ systemctl list-unit-files --type=service
+```
+
 #### 参考
+http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html  
 https://www.freedesktop.org/software/systemd/man/  
 
 # 参考
