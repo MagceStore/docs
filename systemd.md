@@ -111,7 +111,7 @@ Gentoo | Optional
 * systemctl
 * timedatectl
 
-### systemctl 命令
+# systemctl 命令
 
 #### systemctl list-units命令可以查看当前系统的所有 Unit 
 ```shell
@@ -210,6 +210,31 @@ $ systemctl list-unit-files --type=service
 #### 参考
 http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html  
 https://www.freedesktop.org/software/systemd/man/  
+
+# Unit service 配置文件简介
+### nginx.service
+```ini
+[Unit]
+Description=A high performance web server and a reverse proxy server
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/nginx.pid
+ExecStartPre=/usr/sbin/nginx -t -q -g 'daemon on; master_process on;'
+ExecStart=/usr/sbin/nginx -g 'daemon on; master_process on;'
+ExecReload=/usr/sbin/nginx -g 'daemon on; master_process on;' -s reload
+ExecStop=-/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /run/nginx.pid
+TimeoutStopSec=5
+KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target
+```
+
+#### 参考
+http://www.jinbuguo.com/systemd/systemd.unit.html   
+https://blog.linuxeye.com/400.html  
 
 # 参考
 https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/chap-Managing_Services_with_systemd.html  
