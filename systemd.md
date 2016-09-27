@@ -51,7 +51,7 @@ lsinitramfs -l /boot/initrd.img-4.4.0-34-generic
 [http://molinux.blog.51cto.com/2536040/478704](http://molinux.blog.51cto.com/2536040/478704)   
 [https://segmentfault.com/a/1190000006872609](https://segmentfault.com/a/1190000006872609)   
 
-# <a name="n4"></a>Systemd
+# <a name="n4"></a>Systemd 功能介绍
 
 ### Init 替代品
 Base Event (Upstart)  
