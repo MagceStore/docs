@@ -1,11 +1,11 @@
 # 目录
 * [Unix & Linux 发展简史](#n1)
-* Linux 启动过程
-* Linux 第一个进程 SysV init, Upstart, Systemd
-* Systemd 功能介绍
-* Systemctl 命令简介
-* Unit service 配置文件简介
-* Shadowsocket.service 示例
+* [Linux 启动过程](#n2)
+* [Linux 第一个进程 SysV init, Upstart, Systemd](#n3)
+* [Systemd 功能介绍](#n4)
+* [Systemctl 命令简介](#n5)
+* [Unit service 配置文件简介](#n6)
+* [Shadowsocket.service 示例](#n7)
 
 
 # <a name="n1"></a>Unix & Linux 发展简史
@@ -23,7 +23,7 @@ Unix遵循的原则是KISS (Keep it simple, stupid)
 * Avoid captive user interfaces. (尽量避免令人困惑的用户接口。)  
 * Ability to chain program together to perform complex tasks. (将几个程序连结起来，处理大而复杂的工作。)  
 
-### LINUX 诞生背景
+### <a name="n2"></a>LINUX 诞生背景
 由于贝尔实验室隶属于美国电信大厂AT&T公司的，后来AT&T由于商业的考虑以及在当时实环境下的思考，将UNIX的版权收回去，还特别提到了“不可对学生提供源码”的严格限制。这就对学校里的教导UNIX内核源码相关学问的教授有影响了，没内核源码如何教导学生认识UNIX呢？于是乎，AndrewTanenbaum（谭宁邦）教授自己动手写了Minix这个UNIX Like的内核程序！在编写过程中为了避免版权纠纷，谭宁邦完成不看UNIX内核源码！84年开始编写，86年完成。Minix不是完全免费的，必须通过磁盘/磁带购买才行，但会附上Minix的源码，意味着用户可以学习Minix的内核程序设计概念。  
 
 在后来的几年内，由于计算机硬件工业的强力运作，以intel主导的x86系统架构的个人计算机大行其道，个人计算机算是相当流行的一个机器了！但在此时，人们使用的大多还是需要吃很多系统资源的DOS系列或其它的操作系统。此时，芬兰的郝尔辛基大学 (Helsinki)的一位名叫Linus Torvalds的学生做了件不寻常的事情。Linus手边有个Minix系统(这也是 Unix的分支)，他对这个操作系统相当的有兴趣。此外，由于当时他正好买了一部386的计算机，他想将Minix移植到X86上来，linus向原作者提出一些修改建议，但原作者不接受。受Stallman提倡的Open Source运动的影响，他得以接触到一些source code。在他的努力下，他将Unix改写成可以适用于一般个人计算机的操作系统，到了1991年，他终于将0.02版的hobby放到网络上面供大家下载，并且由于hobby受到大家的肯定，相当多的朋友一起投入这个工作中。终于到了1994年将第一个完整的核心Version 1.0开发完成，并取名Linux。
@@ -40,7 +40,7 @@ Unix遵循的原则是KISS (Keep it simple, stupid)
 [http://blog.tingyun.com/web/article/detail/1010](http://blog.tingyun.com/web/article/detail/1010)   
 
 
-# Linux 启动过程
+# <a name="n3"></a>Linux 启动过程
 ![](images/linux-boot.jpg)
 
 ```bash
@@ -51,7 +51,7 @@ lsinitramfs -l /boot/initrd.img-4.4.0-34-generic
 [http://molinux.blog.51cto.com/2536040/478704](http://molinux.blog.51cto.com/2536040/478704)   
 [https://segmentfault.com/a/1190000006872609](https://segmentfault.com/a/1190000006872609)   
 
-# Systemd
+# <a name="n4"></a>Systemd
 
 ### Init 替代品
 Base Event (Upstart)  
@@ -111,7 +111,7 @@ Gentoo | Optional
 * systemctl
 * timedatectl
 
-# systemctl 命令
+# <a name="n5"></a>systemctl 命令
 
 #### systemctl list-units命令可以查看当前系统的所有 Unit 
 ```shell
@@ -211,7 +211,7 @@ $ systemctl list-unit-files --type=service
 http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html  
 https://www.freedesktop.org/software/systemd/man/  
 
-# Unit service 配置文件简介
+# <a name="n6"></a>Unit service 配置文件简介
 ### nginx.service
 ```ini
 [Unit]
@@ -232,7 +232,7 @@ KillMode=mixed
 WantedBy=multi-user.target
 ```
 
-# Shadowsocket.service 示例
+# <a name="n7"></a>Shadowsocket.service 示例
 
 ### ss-server.service
 ```ini
