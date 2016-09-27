@@ -232,6 +232,35 @@ KillMode=mixed
 WantedBy=multi-user.target
 ```
 
+# Shadowsocket.service 示例
+
+### ss-server.service
+```ini
+[Unit]
+Description=Shadowsocks Server
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/ss-server -c /usr/local/etc/ss-server.json
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+RestartPreventExitStatus=255
+
+[Install]
+WantedBy=multi-user.target
+```
+
+### ss-srever.json
+```json
+{
+  "server_port": 8383,
+  "method": "aes-256-cfb",
+  "password": "welcome@123",
+  "timeout": 300
+}
+```
+
 #### 参考
 http://www.jinbuguo.com/systemd/systemd.unit.html   
 https://blog.linuxeye.com/400.html  
