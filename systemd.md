@@ -251,7 +251,7 @@ RestartPreventExitStatus=255
 WantedBy=multi-user.target
 ```
 
-### ss-srever.json
+### ss-server.json
 ```json
 {
   "server_port": 8383,
