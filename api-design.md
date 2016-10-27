@@ -178,7 +178,7 @@ class TestController extends Controller
     /**
      * 分页列表
      *
-     * ~~~
+     * ```
      * {
      *   "items": [
      *     {
@@ -198,7 +198,7 @@ class TestController extends Controller
      *     "perPage": 20
      *   }
      * }
-     * ~~~
+     * ```
      *
      * @return ArrayDataProvider
      */
@@ -213,12 +213,12 @@ class TestController extends Controller
     /**
      * 返回Object
      *
-     * ~~~
+     * ```
      * {
      *   "id": 1,
      *   "name": "mole"
      * }
-     * ~~~
+     * ```
      *
      * @return Model
      */
@@ -230,12 +230,12 @@ class TestController extends Controller
     /**
      * 成功
      *
-     * ~~~
+     * ```
      * {
      *   "code": 0,
      *   "message": "SUCCESS"
      * }
-     * ~~~
+     * ```
      *
      * @return Success
      */
@@ -247,7 +247,7 @@ class TestController extends Controller
     /**
      * 批处理部分失败
      *
-     * ~~~
+     * ```
      * {
      *   "code": 3,
      *   "message": "PARTIAL_SUCCESS",
@@ -261,7 +261,7 @@ class TestController extends Controller
      *     }
      *   ]
      * }
-     * ~~~
+     * ```
      *
      * @return Success
      */
@@ -283,12 +283,12 @@ class TestController extends Controller
     /**
      * 直接抛出错误信息
      *
-     * ~~~
+     * ```
      * {
      *   "code": 1001
      *   "message": "Token invalid."
      * }
-     * ~~~
+     * ```
      *
      * @throws ClientException
      */
@@ -300,7 +300,7 @@ class TestController extends Controller
     /**
      * 直接抛出验证错误
      *
-     * ~~~
+     * ```
      * {
      *   "code": 2000,
      *   "message": "数据验证错误",
@@ -311,7 +311,7 @@ class TestController extends Controller
      *     }
      *   ]
      * }
-     * ~~~
+     * ```
      *
      * @throws ValidateException
      */
